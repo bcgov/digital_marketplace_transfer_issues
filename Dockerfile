@@ -3,6 +3,7 @@ COPY ./src /usr/app
 WORKDIR /usr/app
 COPY package*.json ./
 COPY gruntfile.js ./
+COPY grunt-configs .
 RUN npm install
 RUN npm run front-end:build
 RUN npm run back-end:build
