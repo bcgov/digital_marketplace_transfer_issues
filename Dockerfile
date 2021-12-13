@@ -1,5 +1,5 @@
 FROM --platform=linux/amd64 docker.io/node:16-alpine
-COPY ./src /usr/app
+COPY ./src /usr/app/src
 WORKDIR /usr/app
 COPY package*.json ./
 COPY gruntfile.js ./
