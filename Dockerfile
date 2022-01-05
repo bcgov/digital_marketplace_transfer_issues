@@ -5,11 +5,12 @@ COPY package*.json ./
 COPY gruntfile.js ./
 COPY ./grunt-configs ./grunt-configs
 COPY tsconfig.json ./
+COPY .env ./
 
 RUN npm install
 RUN npm run front-end:build
-# RUN npm run back-end:build
+RUN npm run back-end:build
 RUN chmod -R 775 /usr/app
 RUN chown -R node:root /usr/app
 EXPOSE 3000
-ENTRYPOINT ["/usr/local/bin/node", "build/front-end/app.js"]
+ENTRYPOINT ["/usr/local/bin/node", "build/back-end/back-end/start.js"]
