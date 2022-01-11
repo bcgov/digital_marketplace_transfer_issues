@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  labels:
+    component: app
+{{ include "digital-marketplace.labels" . | indent 4}}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+        - name: {{ .Values.name }}
+          image: {{ .Values.image.app.repository }}:sha-{{ .Values.image.app.tag }}
+          ports:
+            - containerPort: {{ .Values.port }}
+              protocol: TCP
