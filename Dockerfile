@@ -5,7 +5,6 @@ COPY package*.json ./
 COPY gruntfile.js ./
 COPY ./grunt-configs ./grunt-configs
 COPY tsconfig.json ./
-COPY .env ./
 
 RUN npm install
 RUN npm run front-end:build
